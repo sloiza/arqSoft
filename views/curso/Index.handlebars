@@ -1,4 +1,5 @@
 <p>Welcome to the homepage</p>
+<p>Codigo - nombre - curso - docente - horarios - vacantes </p>
 {{#each cursos}}
-        <p>{{@index}} - {{ this.data.code }} - {{ this.data.name }}</p>
+        <p>{{@index}} - {{ this.data.codigo }} - {{ this.data.nombre }} - {{this.data.curso}} - {{ this.data.docente }} - {{ this.data.horarios}} - {{this.data.vacantes}}</p>
 {{/each}}

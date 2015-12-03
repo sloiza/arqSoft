@@ -21,8 +21,8 @@ client.on("connect", function () {
 function getRedis(key, prefix, callback){
 		if(client.connected == true){
 			client.get(prefix+"_"+key, function(err, reply) {
-				console.log("#getRedis");
-				console.log(reply);
+				// console.log("#getRedis");
+				// console.log(reply);
 				if(err){
 					callback(err, null);
 				}else{
@@ -33,8 +33,8 @@ function getRedis(key, prefix, callback){
 			console.log("Redis disconnected. Couldn't get");
 			client = redis.createClient(port, host, opt);
 			client.get(prefix+"_"+key, function(err, reply) {
-				console.log("#getRedis");
-				console.log(reply);
+				// console.log("#getRedis");
+				// console.log(reply);
 				if(err){
 					callback(err, null);
 				}else{
@@ -49,8 +49,8 @@ function getByPrefix(prefix, callback){
 	var values = [];
 	if(client.connected == true){
 		client.keys(prefix+"_*", function(err, reply) {
-			console.log("#getRedis");
-			console.log(reply);
+			// console.log("#getRedis");
+			// console.log(reply);
 			if(err){
 				callback(err, null);
 			}else{
@@ -61,8 +61,8 @@ function getByPrefix(prefix, callback){
 		console.log("Redis disconnected. Reconnecting");
 		client = redis.createClient(port, host, opt);
 		client.keys(prefix+"_*", function(err, reply) {
-			console.log("#getRedis");
-			console.log(reply);
+			// console.log("#getRedis");
+			// console.log(reply);
 			if(err){
 				callback(err, null);
 			}else{
@@ -80,8 +80,7 @@ function getByPrefix(prefix, callback){
 					callback(null, values);
 		        });
 			}
-		});		
-			//callback(null, null);
+		});	
 	}
 }
 
