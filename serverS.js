@@ -1,27 +1,34 @@
-var express    = require('express');        
-var app        = express();                 
-var bodyParser = require('body-parser');
+var express    = require('express');
+var http = require('http');
+var path = require('path');
+var handlebars  = require('express-handlebars'), hbs;
+var app        = express();
+
+require('./router')(app);
+//var bodyParser = require('body-parser');
 
 //Nos permite obtener data de POST
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+//app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(bodyParser.json());
 
-var port = process.env.PORT || 8080;   // puerto por defecto
-
-var router = express.Router(); 
-app.use('/', router);
-
-//GET localhost:8080/cursos 
-router.get('/cursos', function(req, res) {
-    res.json({ message: 'GET: Obtener cursos' });   
+//var port = process.env.PORT || 8080;   // puerto por defecto
+app.set('port', 8080);
+app.set('views', path.join(__dirname, 'views'));
+ 
+/* express-handlebars - https://github.com/ericf/express-handlebars
+A Handlebars view engine for Express. */
+hbs = handlebars.create({
+   defaultLayout: 'Main'
 });
+ 
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
-//POST localhost:8080/inscripcion
-router.post('/inscripcion', function(req, res) {
-    res.json({ message: 'POST: nueva inscripcion' });   
-});
-
+app.use(express.static(path.join(__dirname, 'static')));
 
 // START THE SERVER
-app.listen(port);
-console.log('Server is running on port ' + port);
+//app.listen(port);
+//console.log('Server is running on port ' + port);
+http.createServer(app).listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
+});
