@@ -1,4 +1,5 @@
-<p>Welcome to the homepage</p>
+<h1>Sistema de inscripción a materias</h1>
+<p>Seleccione materia:</p>
 {{#each cursos}}
-        <p>{{@index}} - {{ this.data.code }} - {{ this.data.name }}</p>
+        <p><a href="http://localhost:8080/new/{{ this.data.codigo }}">{{ this.data.codigo }} - {{ this.data.nombre }}</a></p>
 {{/each}}
