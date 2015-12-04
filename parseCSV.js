@@ -64,6 +64,7 @@ rl.on('line', function (line) {
 	console.log("END FILE");
 	console.log("PROCESS TO REDIS");
 	console.log(JSON.stringify(materias));
+	var i =0;
 	async.eachSeries(materias, function(materia, next){
 		console.log(materia);
 		//var materia = JSON.parse(mat);
@@ -77,6 +78,7 @@ rl.on('line', function (line) {
             }else{
               console.log("response redis");
               console.log(response);
+              i++;
               next(null);
               // console.log("before clear horarios");
               // console.log(materia.horarios);
@@ -87,6 +89,7 @@ rl.on('line', function (line) {
           });
 
 	}, function(err){
+		console.log("Se insertaron: "+i+" materias");
 		process.exit(0);
 	});
 });

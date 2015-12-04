@@ -11,5 +11,7 @@ module.exports = function(app){
  
  	app.post('/new/confirm', InscripcionController.Confirm);
 
+ 	app.get('/inscripciones/:padron', InscripcionController.All);
+
  	app.post('/index', CursoController.Index);
 };

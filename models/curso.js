@@ -27,6 +27,41 @@ Curso.findByCode = function (codigo, curso, callback){
 	});
 }
 
+Curso.validaVacantes = function (codigo, curso, callback){
+	redislib.getRedis(curso, codigo, function(err, json){
+		var curso = JSON.parse(json);
+		if(curso.vacantes > 0){
+			console.log("HAY VACANTES: "+curso.vacantes);
+			callback(null, true);
+		}else{
+			console.log("NO HAY: "+curso.vacantes);
+			callback(null, false);
+		}
+		
+	});
+}
+
+Curso.disminuirVacante = function(codigo, cur, callback){
+	redislib.getRedis(cur, codigo, function(err, json){
+		var curso = new Curso(JSON.parse(json));
+		curso = curso.data;
+		console.log(curso);
+		curso.vacantes--;
+		console.log(curso.vacantes);
+		redislib.insertRedis(cur, codigo, JSON.stringify(curso), function(err, res){
+			if(err){
+				console.log(err);
+				callback(err);
+			}else{
+				console.log("insertRedis:"+res);
+				callback(null, true);
+				
+			}
+		})
+		
+	});
+}
+
 Curso.findAll = function (codigo, callback) {  
   	var cursos = [];
   	redislib.getByPrefix(codigo, function(error, response){
@@ -40,11 +75,6 @@ Curso.findAll = function (codigo, callback) {
 				var prefix = value.split('_')[0];
 				var curso = value.split('_')[1];
 				redislib.getRedis(curso, prefix, function(err, json){
-					// console.log("--- value -----");
-					// console.log(JSON.parse(json));
-					//var json = JSON.parse(json);
-					//json.horarios = JSON.stringify(json.horarios);
-					//console.log(json);
 					var curso = new Curso(JSON.parse(json));
 					cursos.push(curso);
 					next(null);

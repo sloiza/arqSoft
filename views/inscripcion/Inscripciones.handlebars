@@ -1,9 +1,8 @@
-<h1>Sistema de inscripción a materias</h1>
-<p>Seleccione curso:</p>
+<h1>Mis inscripciones</h1>
 
-{{#each cursos}}
+{{#each inscripciones}}
 
-        <p><a href="http://localhost:8080/new/{{ this.data.codigo }}/{{this.data.curso}}"> Curso: {{this.data.curso}}
+        <li>Curso: {{this.data.curso}} </li>
         <li>{{ this.data.codigo }} - {{ this.data.nombre }}</li>  
         <li>Docente: {{ this.data.docente }}</li>
         <li>Horarios: {{ this.data.horarios}}</li> 
