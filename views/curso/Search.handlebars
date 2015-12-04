@@ -1,10 +1,18 @@
 <h1>Buscar materias por código</h1>
+Padron : {{padron}}
 <p>Seleccione código:</p>
 
 <form action="/index" method="post">
     <fieldset>
         <label for="codigo">Código:</label><br>
         <input type="number" id="código" name="codigo" placeholder="Ingresar número de código" />
+        <input type="hidden" value="{{ padron }}" name="padron"/>
+        <input type="hidden" value="{{ email }}" name="email"/>
         <input type="submit" value="Buscar" />
     </fieldset>
 </form>
+
+
+<ul style="list-style-type:none">
+<li><a href="http://localhost:8080/inscripciones/{{ padron }}">Mis inscripciones</a></li>
+</ul>

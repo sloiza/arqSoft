@@ -1,4 +1,6 @@
 <h1>Sistema de inscripción a materias</h1>
+<br>Padrón: {{padron}}</br>
+
 <p>Seleccione curso:</p>
 <table width="1200" border="0" cellspacing="0" cellpadding="1"> 
 <tr bgcolor="#000066" align="center"> 
@@ -13,12 +15,21 @@
 {{#each cursos}}
 <ul style="list-style-type:none">
 		<hr></hr>
-        <p><a href="http://localhost:8080/new/{{ this.data.codigo }}/{{this.data.curso}}"> Curso: {{this.data.curso}}
-        <li>{{ this.data.codigo }} - {{ this.data.nombre }}</li>  
-        <li>Docente: {{ this.data.docente }}</li>
-        <li>Horarios: {{ this.data.horarios}}</li> 
-        <li>Vacantes: {{this.data.vacantes}}</li></a></p>
-        <hr></hr>
+		<form action="/new" method="post">
+	    <fieldset>
+	        <p> Curso: {{this.data.curso}}
+	        <li>{{ this.data.codigo }} - {{ this.data.nombre }}</li>  
+	        <li>Docente: {{ this.data.docente }}</li>
+	        <li>Horarios: {{ this.data.horarios}}</li> 
+	        <li>Vacantes: {{this.data.vacantes}}</li></p>
+	        <hr></hr>
+	        <input type="hidden" value="{{ ../padron }}" name="padron"/>
+	        <input type="hidden" value="{{ ../email }}" name="email"/>
+	        <input type="hidden" value="{{ this.data.curso }}" name="curso"/>
+	        <input type="hidden" value="{{ this.data.codigo }}" name="code"/>
+	        <input type="submit" value="Inscribir" />
+	    </fieldset>
+	</form>
 
 </ul>  
 {{/each}}
@@ -29,5 +40,11 @@
 </tr> 
 </table> 
 
-<a href="http://localhost:8080/">Volver a menú inicio</a>
+
+<ul style="list-style-type:none">
+<li><a href="http://localhost:8080/inscripciones/{{ padron }}">Mis inscripciones</a></li>
+
+<li><a href="http://localhost:8080/search?padron={{padron}}&email={{email}}">Volver a menú inicio</a></li>
+</ul>
+
 

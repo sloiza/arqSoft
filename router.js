@@ -1,13 +1,16 @@
 var CursoController = require('./controllers/CursoController');
 var InscripcionController = require('./controllers/InscripcionController');
+var LoginController = require('./controllers/LoginController');
 
 module.exports = function(app){
           
-    app.get('/', CursoController.Search);
+    app.get('/', LoginController.Login);
+
+    app.get('/search', CursoController.Search);
  
     app.get('/other', CursoController.Other);
 
-    app.get('/new/:code/:curso', InscripcionController.New);   
+    app.post('/new', InscripcionController.New);   
  
  	app.post('/new/confirm', InscripcionController.Confirm);
 

@@ -9,9 +9,10 @@
         <br>
         <input type="hidden" value="{{ datos.curso }}" name="curso"/>
         <input type="hidden" value="{{ datos.codigo }}" name="codigo"/>
+        <input type="hidden" value="{{ padron }}" name="padron_1"/>
         <input type="submit" value="Inscribir" />
     </fieldset>
 </form>
 
-<a href="http://localhost:8080/">Volver a menú inicio</a>
+<a href="http://localhost:8080/search?padron={{padron}}&email={{email}}">Volver a menú inicio</a>
 

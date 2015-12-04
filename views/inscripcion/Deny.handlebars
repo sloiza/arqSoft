@@ -1,7 +1,7 @@
 <p>No hay vacantes en {{ datos.codigo }} - {{datos.nombre}}, curso: {{datos.curso}}</p>
 
 <ul style="list-style-type:none">
-<li><a href="http://localhost:8080/inscripciones/{{ datos.padron }}">Mis inscripciones</a></li>
+<li><a href="http://localhost:8080/inscripciones/{{ padron }}">Mis inscripciones</a></li>
 
-<li><a href="http://localhost:8080/">Volver a menú inicio</a></li>
+<li><a href="http://localhost:8080/search?padron={{padron}}&email={{email}}">Volver a menú inicio</a></li>
 </ul>

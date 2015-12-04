@@ -1,5 +1,5 @@
 //Proceso qye lee el excel y guarda en redis los datos de materias y cursos
-var redislib = require(process.cwd()+ '/redisLib.js');
+var redislib = require(process.cwd()+ '/libs/redisLib.js');
 var async     = require('async'); // asynchronous functions
 var rl = require('readline').createInterface({terminal: false,
   input: require('fs').createReadStream(process.cwd() + '/datos/Horarios_2Q2015.csv')

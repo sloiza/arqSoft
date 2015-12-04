@@ -1,6 +1,6 @@
 var async   	= require('async');
 var redislib = require(process.cwd()+ '/libs/redisLib.js');
-var cursoC = require("../models/curso.js")
+var cursoC = require(process.cwd()+ "/models/curso.js")
 
 var Inscripciones = function (data) {  
     this.data = data;
@@ -53,6 +53,32 @@ Inscripciones.findAll = function(padron, callback){
 				// console.log("cursos");
 				// console.log(cursos);
 				callback(null, inscripciones);
+	        });
+	}
+	});
+}
+
+Inscripciones.inscriptoMateria = function(padron, code, callback){
+	var inscripciones = [];
+  	redislib.getByPrefix(padron, function(error, response){
+		if(error){
+			console.log(error);
+		}
+		else{
+			console.log("OK");
+			console.log(response);
+			async.eachSeries(response, function(value, next){
+				var padron = value.split('_')[0];
+				var codigo = value.split('_')[1];
+				if(codigo == code){
+					callback(null, true);
+				}else{
+					next(null);
+				}
+			}, function(err){ // series - end
+				// console.log("cursos");
+				// console.log(cursos);
+				callback(null, false);
 	        });
 	}
 	});
