@@ -4,7 +4,18 @@ var util = require('./util');
 
 var modelo = new util();
 
-modelo.validarPadron(1234);
+$(document).ready(function() {
+	//jQuery code goes here
+	$('#padron').on('input', function() {
+		var input=$(this);
+		var padron=input.val();
+		if(modelo.validarPadron(padron)){input.css("background-color", "green");}
+		else{input.css("background-color", "red");}
+	});
+});
+
+//$('h2').html(modelo.validarPadron(bla));
+
 },{"./util":2,"jquery":3}],2:[function(require,module,exports){
 var Util = function() {
 
@@ -12,7 +23,7 @@ var Util = function() {
 
   return {
     validarPadron: function(padron) {
-      alert("Hola, mi padron es " + padron);
+      return padron.toString().length == 5;
     },
     msj : function(){
       return "Mensaje.";

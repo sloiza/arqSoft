@@ -4,10 +4,7 @@ var Util = function() {
 
   return {
     validarPadron: function(padron) {
-      alert("Hola, mi padron es " + padron);
-    },
-    msj : function(){
-      return "Mensaje.";
+      return padron.toString().length == 5;
     }
   };
 }
