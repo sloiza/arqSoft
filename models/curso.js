@@ -43,6 +43,7 @@ Curso.validaVacantes = function (codigo, curso, callback){
 
 Curso.disminuirVacante = function(codigo, cur, callback){
 	redislib.getRedis(cur, codigo, function(err, json){
+		console.log(json);
 		var curso = new Curso(JSON.parse(json));
 		curso = curso.data;
 		console.log(curso);

@@ -1,4 +1,4 @@
-Curso = require(process.cwd()+ "/models/curso.js");
+var Curso = require(process.cwd()+ "/models/curso.js");
 var inscripcion = require(process.cwd()+ "/models/inscripcion.js");
 exports.New = function(request, response){
 	console.log("Request New inscripciones body");
@@ -42,7 +42,8 @@ exports.Confirm = function(request, response){
 	console.log(request.params);
 	response.padron = request.body.padron;
 	response.email = request.body.email;
-	response.codigo = request.body.codigo;
+	console.log(response.email);
+	response.codigo = request.body.code;
 	response.curso = request.body.curso;
 	var p = request.body.padron_1;
 

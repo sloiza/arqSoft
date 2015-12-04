@@ -10,7 +10,7 @@ module.exports = function(app){
  
     app.get('/other', CursoController.Other);
 
-    app.post('/new', InscripcionController.New);   
+    app.post('/new', InscripcionController.Confirm);   
  
  	app.post('/new/confirm', InscripcionController.Confirm);
 
