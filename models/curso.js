@@ -19,6 +19,14 @@ Curso.prototype.set = function (name, value) {
     this.data[name] = value;
 }
 
+Curso.findByCode = function (codigo, curso, callback){
+	redislib.getRedis(curso, codigo, function(err, json){
+		var curso = new Curso(JSON.parse(json));
+		callback(null, curso);
+		
+	});
+}
+
 Curso.findAll = function (codigo, callback) {  
   	var cursos = [];
   	redislib.getByPrefix(codigo, function(error, response){

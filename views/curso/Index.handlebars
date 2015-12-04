@@ -3,6 +3,6 @@
 
 {{#each cursos}}
 
-        <p><a href="http://localhost:8080/new/{{ this.data.codigo }}">{{@index}} - {{ this.data.codigo }} - {{ this.data.nombre }} - {{this.data.curso}} - {{ this.data.docente }} - {{ this.data.horarios}} - {{this.data.vacantes}}</a></p>
+        <p><a href="http://localhost:8080/new/{{ this.data.codigo }}/{{this.data.curso}}">{{@index}} - {{ this.data.codigo }} - {{ this.data.nombre }} - {{this.data.curso}} - {{ this.data.docente }} - {{ this.data.horarios}} - {{this.data.vacantes}}</a></p>
         
 {{/each}}

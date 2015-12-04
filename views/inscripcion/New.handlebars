@@ -1,4 +1,4 @@
-<h1>Inscribirse a {{ codigo }}</h1>
+<h1>Inscribirse a {{ datos.codigo }}</h1>
 <form action="/new/confirm" method="post">
     <fieldset>
         <label for="padron">Padrón:</label><br>
@@ -7,7 +7,7 @@
         <label for="email">Email:</label><br>
         <input type="email" id="email" name="email" placeholder="Ingresar dirección de correo electrónico" />
         <br>
-        <input type="hidden" value="{{ codigo }}" name="codigo"/>
+        <input type="hidden" value="{{ datos.codigo }}" name="codigo"/>
         <input type="submit" value="Inscribir" />
     </fieldset>
 </form>
