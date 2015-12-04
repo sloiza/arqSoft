@@ -1,11 +1,35 @@
 <h1>Mis inscripciones</h1>
 
+<table width="900" border="0" cellspacing="0" cellpadding="1"> 
+<tr bgcolor="#000066" align="center"> 
+<td><b><font color="#FFFFFF">Inscripciones</font></b></td> 
+</tr> 
+<tr bgcolor="#000066"> 
+<td> 
+<table width="100%" border="0" cellspacing="0" cellpadding="4"> 
+<tr bgcolor="#FFFFFF"> 
+
+<td>
 {{#each inscripciones}}
 
-        <li>Curso: {{this.data.curso}} </li>
-        <li>{{ this.data.codigo }} - {{ this.data.nombre }}</li>  
-        <li>Docente: {{ this.data.docente }}</li>
-        <li>Horarios: {{ this.data.horarios}}</li> 
-        <li>Vacantes: {{this.data.vacantes}}</li></a></p>
+
+<ul style="list-style-type:none">
+
+		<hr></hr>
+        <li>{{ this.data.codigo }} - {{ this.data.nombre }}</li>
+       	<li> Curso: {{this.data.curso}} </li>
+        <li> Docente: {{ this.data.docente }}</li>
+        <li> Horarios: {{ this.data.horarios}}</li>
+        <li> Vacantes: {{this.data.vacantes}}</li>
+        <hr></hr>
+</ul>  
 
 {{/each}}
+</td> 
+</tr> 
+</table> 
+</td> 
+</tr> 
+</table> 
+
+<a href="http://localhost:8080/">Volver a menú inicio</a>

@@ -1,5 +1,5 @@
 //Proceso qye lee el excel y guarda en redis los datos de materias y cursos
-var redislib = require(process.cwd()+ '/redisLib.js');
+var redislib = require(process.cwd()+ '/libs/redisLib.js');
 var async     = require('async'); // asynchronous functions
 var rl = require('readline').createInterface({terminal: false,
   input: require('fs').createReadStream(process.cwd() + '/datos/Horarios_2Q2015.csv')
@@ -64,7 +64,6 @@ rl.on('line', function (line) {
 	console.log("END FILE");
 	console.log("PROCESS TO REDIS");
 	console.log(JSON.stringify(materias));
-	var i =0;
 	async.eachSeries(materias, function(materia, next){
 		console.log(materia);
 		//var materia = JSON.parse(mat);
@@ -78,7 +77,6 @@ rl.on('line', function (line) {
             }else{
               console.log("response redis");
               console.log(response);
-              i++;
               next(null);
               // console.log("before clear horarios");
               // console.log(materia.horarios);
@@ -89,7 +87,6 @@ rl.on('line', function (line) {
           });
 
 	}, function(err){
-		console.log("Se insertaron: "+i+" materias");
 		process.exit(0);
 	});
 });

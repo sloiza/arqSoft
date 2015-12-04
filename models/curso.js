@@ -1,4 +1,4 @@
-var redislib = require(process.cwd()+ '/redisLib.js');
+var redislib = require(process.cwd()+ '/libs/redisLib.js');
 var async   	= require('async');
 
 var Curso = function (data) {  

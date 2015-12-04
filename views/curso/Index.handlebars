@@ -1,12 +1,33 @@
 <h1>Sistema de inscripción a materias</h1>
 <p>Seleccione curso:</p>
+<table width="1200" border="0" cellspacing="0" cellpadding="1"> 
+<tr bgcolor="#000066" align="center"> 
+<td><b><font color="#FFFFFF">Cursos</font></b></td> 
+</tr> 
+<tr bgcolor="#000066"> 
+<td> 
+<table width="100%" border="0" cellspacing="0" cellpadding="4"> 
+<tr bgcolor="#FFFFFF"> 
 
+<td>
 {{#each cursos}}
-
+<ul style="list-style-type:none">
+		<hr></hr>
         <p><a href="http://localhost:8080/new/{{ this.data.codigo }}/{{this.data.curso}}"> Curso: {{this.data.curso}}
         <li>{{ this.data.codigo }} - {{ this.data.nombre }}</li>  
         <li>Docente: {{ this.data.docente }}</li>
         <li>Horarios: {{ this.data.horarios}}</li> 
         <li>Vacantes: {{this.data.vacantes}}</li></a></p>
+        <hr></hr>
 
+</ul>  
 {{/each}}
+</td> 
+</tr> 
+</table> 
+</td> 
+</tr> 
+</table> 
+
+<a href="http://localhost:8080/">Volver a menú inicio</a>
+
