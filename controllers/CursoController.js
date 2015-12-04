@@ -16,10 +16,16 @@ exports.Index = function(request, response){
 	response.codigo = request.body.codigo;
 	
 	Curso.findAll(response.codigo,function (err, users) {
-		response.cursos = users;
-		// console.log(response.cursos);
-		 console.log("--------------");
-		response.render('curso/Index', response);
+		console.log(users);
+		if(users.length == 0){
+			response.render('curso/Search', response);
+		}else{
+			response.cursos = users;
+			 console.log("--------------");
+			response.render('curso/Index', response);
+			
+		}
+
     });
 
 };
